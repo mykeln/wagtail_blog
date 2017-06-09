@@ -182,6 +182,8 @@ def limit_author_choices():
             limit = Q()
             for s in LIMIT_AUTHOR_CHOICES:
                 limit = limit | Q(groups__name=s)
+                if s == '':
+                    limit = limit | Q(groups__isnull=True)
         if getattr(settings, 'BLOG_LIMIT_AUTHOR_CHOICES_ADMIN', False):
             limit = limit | Q(is_staff=True)
     else:
