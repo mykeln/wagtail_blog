@@ -360,11 +360,12 @@ class Command(BaseCommand):
                 new_entry.body = body
                 new_entry.owner = user
                 new_entry.author = user
+                new_entry.latest_revision_created_at = date
                 new_entry.save()
             except BlogPage.DoesNotExist:
                 new_entry = blog_index.add_child(instance=BlogPage(
                     title=title, slug=slug, search_description="description",
-                    date=date, body=body, owner=user, author=user))
+                    date=date, latest_revision_created_at=date, body=body, owner=user, author=user))
             featured_image = post.get('featured_image')
             if featured_image is not None:
                 title = post['featured_image']['title']
