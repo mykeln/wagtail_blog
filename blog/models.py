@@ -113,7 +113,7 @@ class BlogCategory(models.Model):
         max_length=80, unique=True, verbose_name=_('Category Name'))
     slug = models.SlugField(unique=True, max_length=80)
     parent = models.ForeignKey(
-        'self', blank=True, null=True, related_name="children",
+        'self', on_delete=models.CASCADE, blank=True, null=True, related_name="children",
         help_text=_(
             'Categories, unlike tags, can have a hierarchy. You might have a '
             'Jazz category, and under that have children categories for Bebop'
@@ -155,7 +155,7 @@ class BlogCategory(models.Model):
 
 class BlogCategoryBlogPage(models.Model):
     category = models.ForeignKey(
-        BlogCategory, related_name="+", verbose_name=_('Category'))
+        BlogCategory, related_name="+", verbose_name=_('Category'), on_delete=models.CASCADE)
     page = ParentalKey('BlogPage', related_name='categories')
     panels = [
         FieldPanel('category'),

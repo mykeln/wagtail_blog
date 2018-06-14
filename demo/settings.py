@@ -44,14 +44,14 @@ INSTALLED_APPS = (
 
     'wagtail.core',
     'wagtail.admin',
-    'wagtail.docs',
+    'wagtail.documents',
     'wagtail.snippets',
     'wagtail.users',
     'wagtail.images',
     'wagtail.embeds',
     'wagtail.search',
-    'wagtail.redirects',
-    'wagtail.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.contrib.forms',
     'wagtail.sites',
 
     'blog',
@@ -67,7 +67,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.redirects.middleware.RedirectMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 
 ROOT_URLCONF = 'demo.urls'
